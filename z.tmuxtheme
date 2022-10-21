@@ -1,0 +1,148 @@
+#
+# Z
+# base on jimeh/tmux-themepack : basic.tmuxtheme
+# https://github.com/jimeh/tmux-themepack
+# ======================================================
+
+# z format options
+set -goq @z-status-left-area-left-format "#S"
+set -goq @z-status-left-area-middle-format "#I"
+set -goq @z-status-left-area-right-format "#P"
+set -goq @z-status-right-area-left-format "#H"
+set -goq @z-status-right-area-middle-format "%H:%M:%S"
+set -goq @z-status-right-area-right-format "%d-%b-%y"
+set -goq @z-window-status-current-format "#I:#W#F"
+set -goq @z-window-status-format "#I:#W#F"
+
+# Customizable prefixes and suffixes for @z-* format options
+set -goq @z-status-left-area-left-prefix ""
+set -goq @z-status-left-area-left-suffix ""
+set -goq @z-status-left-area-middle-prefix ""
+set -goq @z-status-left-area-middle-suffix ""
+set -goq @z-status-left-area-right-prefix ""
+set -goq @z-status-left-area-right-suffix ""
+set -goq @z-status-right-area-left-prefix ""
+set -goq @z-status-right-area-left-suffix ""
+set -goq @z-status-right-area-middle-prefix ""
+set -goq @z-status-right-area-middle-suffix ""
+set -goq @z-status-right-area-right-prefix ""
+set -goq @z-status-right-area-right-suffix ""
+set -goq @z-window-status-current-prefix ""
+set -goq @z-window-status-current-suffix ""
+set -goq @z-window-status-prefix ""
+set -goq @z-window-status-suffix ""
+
+# Apply prefixes and suffixes to @z-* format options
+set -gqF @z-status-left-area-left-format "#{@z-status-left-area-left-prefix}#{@z-status-left-area-left-format}#{@z-status-left-area-left-suffix}"
+set -gqF @z-status-left-area-middle-format "#{@z-status-left-area-middle-prefix}#{@z-status-left-area-middle-format}#{@z-status-left-area-middle-suffix}"
+set -gqF @z-status-left-area-right-format "#{@z-status-left-area-right-prefix}#{@z-status-left-area-right-format}#{@z-status-left-area-right-suffix}"
+set -gqF @z-status-right-area-left-format "#{@z-status-right-area-left-prefix}#{@z-status-right-area-left-format}#{@z-status-right-area-left-suffix}"
+set -gqF @z-status-right-area-middle-format "#{@z-status-right-area-middle-prefix}#{@z-status-right-area-middle-format}#{@z-status-right-area-middle-suffix}"
+set -gqF @z-status-right-area-right-format "#{@z-status-right-area-right-prefix}#{@z-status-right-area-right-format}#{@z-status-right-area-right-suffix}"
+set -gqF @z-window-status-current-format "#{@z-window-status-current-prefix}#{@z-window-status-current-format}#{@z-window-status-current-suffix}"
+set -gqF @z-window-status-format "#{@z-window-status-prefix}#{@z-window-status-format}#{@z-window-status-suffix}"
+
+# Theme options
+set -goq  @theme-clock-mode-colour red
+set -goq  @theme-clock-mode-style 24
+set -goq  @theme-display-panes-active-colour default
+set -goq  @theme-display-panes-colour default
+set -goq  @theme-message-bg default
+set -goq  @theme-message-command-bg default
+set -goq  @theme-message-command-fg default
+set -goq  @theme-message-fg default
+set -goq  @theme-mode-bg yellow
+set -goq  @theme-mode-fg default
+set -goq  @theme-pane-active-border-bg default
+set -goq  @theme-pane-active-border-fg colour240
+set -goq  @theme-pane-border-bg default
+set -goq  @theme-pane-border-fg colour236
+set -goq  @theme-status-bg colour236
+set -goq  @theme-status-fg colour250
+set -goq  @theme-status-interval 1
+set -goq  @theme-status-justify centre
+set -goq  @theme-status-left-bg default
+set -goq  @theme-status-left-fg blue
+set -goq  @theme-status-left-length 40
+set -goq  @theme-status-right-bg default
+set -goq  @theme-status-right-fg grey
+set -goq  @theme-status-right-length 40
+set -goq  @theme-window-status-activity-bg black
+set -goq  @theme-window-status-activity-fg yellow
+set -goq  @theme-window-status-current-bg colour240
+set -goq  @theme-window-status-current-fg white
+set -goqF @theme-window-status-current-format " #{@z-window-status-current-format} "
+set -goqF @theme-window-status-format " #{@z-window-status-format} "
+set -goq  @theme-window-status-separator ""
+
+# prefix-highlight
+## prompt
+set -goq  @z-prefix-prefix-prompt "\\"
+set -goq  @z-prefix-copy-prompt "\["
+set -goq  @z-prefix-sync-prompt "\~"
+set -goq  @z-prefix-empty-prompt "\|"
+## style
+set -goqF  @z-prefix-prefix-style "fg=blue,bg=default"
+set -goqF  @z-prefix-copy-style "fg=#{@theme-mode-bg},bg=default"
+set -goqF  @z-prefix-sync-style "fg=green,bg=default"
+set -goqF  @z-prefix-empty-style "fg=colour244,bg=default"
+## prefix suffix
+set -goq  @z-prefix-output-prefix " "
+set -goq  @z-prefix-output-suffix " "
+## setting
+set -gq  @z-prefix-client "#[#{@z-prefix-prefix-style}]#{?client_prefix,#{@z-prefix-prefix-prompt},}"
+set -gq  @z-prefix-pane "#[#{@z-prefix-copy-style}]#{?pane_in_mode,#{@z-prefix-copy-prompt},}"
+set -gq  @z-prefix-sync "#[#{@z-prefix-sync-style}]#{?synchronize-panes,#{@z-prefix-sync-prompt},}"
+set -gq  @z-prefix-empty "#[#{@z-prefix-empty-style}]#{?client_prefix,,#{?pane_in_mode,,#{?synchronize-panes,,#{@z-prefix-empty-prompt}}}}"
+set -gq  @z-prefix-default-style "#[default]"
+
+%if "#{==:#{@z-prefix-highlight-conf},on}"
+set -gqF @z_prefix_highlight "#{@prefix_highlight}"
+%else
+set -gqF @z_prefix_highlight "#[#{@z-prefix-empty-style}]#{@z-prefix-output-prefix}#{@z-prefix-client}#{@z-prefix-pane}#{@z-prefix-sync}#{@z-prefix-empty}#{@z-prefix-default-style}#[#{@z-prefix-empty-style}]#{@z-prefix-output-suffix}"
+%endif
+
+# set @theme-status
+set -goqF @theme-status-left "#{@z-status-left-area-left-format}#[fg=colour240] • #[fg=colour244]#{@z-status-left-area-middle-format} #[fg=colour245]#{@z-status-left-area-right-format}"
+set -goqF @theme-status-right "#[fg=colour244] #{@z-status-right-area-left-format}#{@z_prefix_highlight}#[fg=colour244]#{@z-status-right-area-middle-format} #{@z-status-right-area-right-format}"
+
+# Customizable prefixes and suffixes for @theme-* format options
+set -goq @theme-status-left-prefix ""
+set -goq @theme-status-left-suffix ""
+set -goq @theme-status-right-prefix ""
+set -goq @theme-status-right-suffix ""
+set -goq @theme-window-status-current-prefix ""
+set -goq @theme-window-status-current-suffix ""
+set -goq @theme-window-status-prefix ""
+set -goq @theme-window-status-suffix ""
+
+# Apply prefixes and suffixes to @theme-* format options
+set -gqF @theme-status-left "#{@theme-status-left-prefix}#{@theme-status-left}#{@theme-status-left-suffix}"
+set -gqF @theme-status-right "#{@theme-status-right-prefix}#{@theme-status-right}#{@theme-status-right-suffix}"
+set -gqF @theme-window-status-current-format "#{@theme-window-status-current-prefix}#{@theme-window-status-current-format}#{@theme-window-status-current-suffix}"
+set -gqF @theme-window-status-format "#{@theme-window-status-prefix}#{@theme-window-status-format}#{@theme-window-status-suffix}"
+
+# Apply @theme-* options to Tmux
+set -gF  display-panes-active-colour "#{@theme-display-panes-active-colour}"
+set -gF  display-panes-colour "#{@theme-display-panes-colour}"
+set -gF  message-command-style "fg=#{@theme-message-command-fg},bg=#{@theme-message-command-bg}"
+set -gF  message-style "fg=#{@theme-message-fg},bg=#{@theme-message-bg}"
+set -gF  status-interval "#{@theme-status-interval}"
+set -gF  status-justify "#{@theme-status-justify}"
+set -gF  status-left "#{@theme-status-left}"
+set -gF  status-left-length "#{@theme-status-left-length}"
+set -gF  status-left-style "fg=#{@theme-status-left-fg},bg=#{@theme-status-left-bg}"
+set -gF  status-right "#{@theme-status-right}"
+set -gF  status-right-length "#{@theme-status-right-length}"
+set -gF  status-right-style "fg=#{@theme-status-right-fg},bg=#{@theme-status-right-bg}"
+set -gF  status-style "fg=#{@theme-status-fg},bg=#{@theme-status-bg}"
+set -gwF clock-mode-colour "#{@theme-clock-mode-colour}"
+set -gwF clock-mode-style "#{@theme-clock-mode-style}"
+set -gwF mode-style "fg=#{@theme-mode-fg},bg=#{@theme-mode-bg}"
+set -gwF pane-active-border-style "fg=#{@theme-pane-active-border-fg},bg=#{@theme-pane-active-border-bg}"
+set -gwF pane-border-style "fg=#{@theme-pane-border-fg},bg=#{@theme-pane-border-bg}"
+set -gwF window-status-activity-style "fg=#{@theme-window-status-activity-fg},bg=#{@theme-window-status-activity-bg}"
+set -gwF window-status-current-format "#{@theme-window-status-current-format}"
+set -gwF window-status-current-style "fg=#{@theme-window-status-current-fg},bg=#{@theme-window-status-current-bg}"
+set -gwF window-status-format "#{@theme-window-status-format}"
+set -gwF window-status-separator "#{@theme-window-status-separator}"
